@@ -1,0 +1,12 @@
+<section id="home">
+  <div class="flex flex-wrap gap-4">
+    <app-blog-post
+      *ngFor="let post of blogPosts"
+      [title]="post.title"
+      [image]="post.image"
+      [description]="post.description"
+      [tags]="post.tags"
+    >
+    </app-blog-post>
+  </div>
+</section>

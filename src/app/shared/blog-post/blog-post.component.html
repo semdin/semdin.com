@@ -1,0 +1,15 @@
+<div class="card bg-base-100 w-96 shadow-xl">
+  <figure>
+    <img [src]="image" [alt]="title" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      {{ title }}
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p>{{ description }}</p>
+    <div class="card-actions justify-end">
+      <div *ngFor="let tag of tags" class="badge badge-outline">{{ tag }}</div>
+    </div>
+  </div>
+</div>
