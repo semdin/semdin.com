@@ -1,59 +1,105 @@
-# SemdinCom
+# semdin.com
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+This repository contains the **semdin.com** project, a containerized web application with a modern Angular frontend served via Nginx. This project demonstrates the use of Docker for deployment and is designed to scale with additional backend and database integrations.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Angular frontend with SSR-ready build setup.
+- Deployed via Docker using multi-stage builds.
+- Nginx configured to serve the Angular application.
+- Flexible and scalable deployment for production environments.
 
-```bash
-ng serve
-```
+## Prerequisites
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+To run this project, ensure you have the following installed on your machine:
 
-## Code scaffolding
+- **Docker**: [Installation Guide](https://docs.docker.com/get-docker/)
+- **Node.js** (for development only): [Download](https://nodejs.org/)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Getting Started
 
-```bash
-ng generate component component-name
-```
+Follow these instructions to set up and run the project on your local environment.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### 1. Clone the Repository
 
 ```bash
-ng build
+git clone https://github.com/semdin/semdin.com.git
+cd semdin.com
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 2. Build the Docker Image
 
 ```bash
-ng test
+docker build -t semdin.com-frontend .
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 3. Run the Container
 
 ```bash
-ng e2e
+docker run -d -p 8080:80 semdin.com-frontend
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 4. Access the Application
 
-## Additional Resources
+Open your browser and navigate to:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```
+http://localhost:8080
+```
+
+You should see the Angular application served via Nginx.
+
+## Project Structure
+
+```plaintext
+semdin.com/
+├── src/                  # Angular application source code
+├── Dockerfile            # Docker build configuration
+├── nginx.conf            # Nginx configuration file
+├── package.json          # Node.js dependencies
+├── README.md             # Project documentation
+└── ...                   # Other Angular and project-related files
+```
+
+## Deployment
+
+This project can be deployed to any server or cloud environment that supports Docker. For example:
+
+### Using Docker Compose (Optional)
+
+1. Create a `docker-compose.yml` file:
+
+```yaml
+version: "3.8"
+
+services:
+  frontend:
+    build: .
+    ports:
+      - "80:80"
+```
+
+2. Start the services:
+
+```bash
+docker-compose up -d
+```
+
+### Cloud Deployment
+
+For production, consider using platforms like AWS, Azure, or Google Cloud for hosting your containers.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## Contact
+
+For any inquiries or issues, please contact:
+
+- **Email**: mehmetsemdinaktay@gmail.com
+- **GitHub**: [semdin](https://github.com/semdin)
